@@ -14,7 +14,7 @@
 const envSiteUrl = (import.meta.env.PUBLIC_SITE_URL as string | undefined)?.trim();
 const envAllowIndexing = (import.meta.env.PUBLIC_ALLOW_INDEXING as string | undefined)?.trim();
 
-const DEFAULT_SITE_URL = 'https://figaros-barbearia.vercel.app';
+const DEFAULT_SITE_URL = 'https://www.figarosbarbearia.com.br';
 
 export const siteConfig = {
   name: "Figaro's Barbearia",

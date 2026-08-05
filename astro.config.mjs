@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // Fonte única de URL: PUBLIC_SITE_URL é definida na Vercel quando o domínio
 // oficial entrar em produção. Enquanto isso, usa o domínio temporário.
-const siteUrl = (process.env.PUBLIC_SITE_URL || 'https://figaros-barbearia.vercel.app').replace(/\/+$/, '');
+const siteUrl = (process.env.PUBLIC_SITE_URL || 'https://www.figarosbarbearia.com.br').replace(/\/+$/, '');
 // Sitemap só é gerado quando a indexação está liberada (domínio oficial).
 const allowIndexing = process.env.PUBLIC_ALLOW_INDEXING === 'true';
 
