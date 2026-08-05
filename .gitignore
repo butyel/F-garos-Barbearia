@@ -1,0 +1,12 @@
+# Vercel / deployments
+.vercel/
+
+# Firebase cache
+.firebase/
+
+# Dependencies
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db

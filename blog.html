@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Figaro's Barbearia | Prótese Capilar</title>
+  <meta name="description" content="Blog da Figaro's Barbearia: dicas sobre prótese capilar, cuidados com o cabelo, tendências e novidades. Especialista em transformação masculina em Presidente Epitácio.">
+  <meta property="og:title" content="Blog - Figaro's Barbearia | Prótese Capilar">
+  <meta property="og:description" content="Dicas sobre prótese capilar, cuidados com o cabelo e tendências masculinas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://figarosbarbearia.web.app/blog.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --charcoal: #141414;
+      --dark: #1e1e1e;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --gray: #888888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 12px 0;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .logo span {
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      display: block;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .nav-link:hover,
+    .nav-link.active { color: var(--gold); }
+    .btn {
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+    .blog-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 100%);
+    }
+    .blog-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+    .blog-hero h1 span { color: var(--gold); }
+    .blog-hero p {
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* CATEGORY FILTER */
+    .filter-bar {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-btn {
+      padding: 6px 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--gray);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .filter-btn.active {
+      background: rgba(201,168,76,0.1);
+    }
+
+    /* POSTS GRID */
+    .posts-section {
+      padding: 40px 0 80px;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .post-card {
+      background: var(--dark);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .post-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+    .post-card-image {
+      height: 200px;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    .post-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .post-card:hover .post-card-image img {
+      transform: scale(1.05);
+    }
+    .post-card-body {
+      padding: 22px;
+    }
+    .post-card-body .category {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .post-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .post-card-body p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .post-card-body .meta {
+      font-size: 0.8rem;
+      color: var(--gray);
+      display: flex;
+      gap: 12px;
+    }
+    .no-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      font-size: 2.5rem;
+      background: var(--charcoal);
+    }
+
+    /* SIDEBAR LAYOUT */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      padding: 40px 0 80px;
+    }
+
+    /* SIDEBAR */
+    .sidebar .panel {
+      background: var(--dark);
+      border-radius: 10px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 24px;
+    }
+    .sidebar .panel h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: var(--gold);
+    }
+    .sidebar .panel p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    .sidebar-links {
+      list-style: none;
+    }
+    .sidebar-links li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .sidebar-links li:last-child { border-bottom: none; }
+    .sidebar-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .sidebar-links a:hover { color: var(--gold); }
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 15px;
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin: 3px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .tag:hover {
+      background: rgba(201,168,76,0.2);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 60px 0;
+      background: var(--gold);
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--black);
+      margin-bottom: 15px;
+    }
+    .cta-section p {
+      color: rgba(0,0,0,0.7);
+      margin-bottom: 25px;
+    }
+    .cta-section .btn {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    footer p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* LOADING */
+    .loading-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--gray);
+      grid-column: 1 / -1;
+    }
+    .loading-state .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(201,168,76,0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--gray);
+      grid-column: 1 / -1;
+    }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 15px; }
+    .empty-state h4 { color: var(--white); margin-bottom: 8px; }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 1000;
+      transition: transform 0.3s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* RESPONSIVE */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--gold);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 968px) {
+      .mobile-menu-btn { display: block; }
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0; right: 0;
+        background: rgba(10,10,10,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        display: none;
+        border-bottom: 1px solid var(--gold);
+      }
+      .nav-menu.active { display: flex; }
+      .nav-link { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+      .blog-layout {
+        grid-template-columns: 1fr;
+      }
+      .blog-hero h1 { font-size: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 15px; }
+      .logo { font-size: 1.3rem; }
+      .logo span { font-size: 0.7rem; }
+      .blog-hero { padding: 120px 0 40px; }
+      .blog-hero h1 { font-size: 1.6rem; }
+      .post-card-image { height: 180px; }
+      .cta-section h2 { font-size: 1.6rem; }
+      .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          Figaro's Barbearia
+          <span>Prótese Capilar • Pres. Epitácio</span>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-menu" id="navMenu">
+          <a href="/#resultados" class="nav-link">Resultados</a>
+          <a href="/#servicos" class="nav-link">Serviços</a>
+          <a href="/#sobre" class="nav-link">Sobre</a>
+          <a href="/blog.html" class="nav-link active">Blog</a>
+          <a href="/#contato" class="nav-link">Contato</a>
+          <a href="https://wa.me/5518981188505" class="btn" target="_blank">Agendar</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Nosso <span>Blog</span></h1>
+      <p>Dicas, novidades e tudo sobre prótese capilar, cuidados masculinos e transformação visual.</p>
+    </div>
+  </section>
+
+  <!-- FILTER + POSTS -->
+  <section class="posts-section">
+    <div class="container">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all" onclick="filterByCategory('all', this)">Todos</button>
+      </div>
+
+      <div class="posts-grid" id="postsGrid">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Carregando artigos...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Transforme seu visual</h2>
+      <p>Agende uma avaliação gratuita e descubra a prótese capilar ideal para você.</p>
+      <a href="https://wa.me/5518981188505?text=Olá! Gostaria de agendar minha avaliação gratuita." class="btn" target="_blank">Falar no WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Figaro's Barbearia • <a href="https://www.instagram.com/figarosbarbeariape/" target="_blank">@figarosbarbeariape</a></p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/5518981188505" class="whatsapp-float" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.108 1.508 5.837L.057 23.25c-.073.27.162.506.432.433l5.501-1.442A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.944 0-3.757-.541-5.293-1.476l-.379-.223-3.926 1.029 1.055-3.835-.247-.394A9.797 9.797 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+  </a>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+    document.querySelectorAll('.nav-link').forEach(function(l) {
+      l.addEventListener('click', function() {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+  </script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  <script src="js/firebase.js"></script>
+
+  <script>
+    var allPosts = [];
+
+    function loadBlogPosts() {
+      var grid = document.getElementById('postsGrid');
+      grid.innerHTML = '<div class="loading-state"><div class="spinner"></div><p>Carregando artigos...</p></div>';
+
+      db.ref('posts').once('value')
+        .then(function(snapshot) {
+          allPosts = [];
+          var categories = new Set();
+          var data = snapshot.val();
+
+          if (data) {
+            Object.keys(data).forEach(function(key) {
+              var post = { id: key, ...data[key] };
+              if (post.status === 'published') {
+                allPosts.push(post);
+                if (post.category) categories.add(post.category);
+              }
+            });
+            allPosts.sort(function(a, b) {
+              return (b.createdAt || 0) - (a.createdAt || 0);
+            });
+          }
+
+          renderCategories(Array.from(categories));
+          renderPosts(allPosts);
+        })
+        .catch(function(err) {
+          console.error('Erro ao carregar posts:', err);
+          grid.innerHTML = '<div class="empty-state"><div class="icon">😕</div><h4>Erro ao carregar</h4><p>Não foi possível carregar os artigos. Tente novamente mais tarde.</p></div>';
+        });
+    }
+
+    function renderCategories(categories) {
+      var bar = document.getElementById('filterBar');
+      categories.forEach(function(cat) {
+        var btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.category = cat;
+        btn.textContent = cat;
+        btn.onclick = function() { filterByCategory(cat, btn); };
+        bar.appendChild(btn);
+      });
+    }
+
+    function filterByCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      if (cat === 'all') {
+        renderPosts(allPosts);
+      } else {
+        renderPosts(allPosts.filter(function(p) { return p.category === cat; }));
+      }
+    }
+
+    function renderPosts(posts) {
+      var grid = document.getElementById('postsGrid');
+
+      if (posts.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><div class="icon">📝</div><h4>Nenhum artigo encontrado</h4><p>Em breve novos artigos serão publicados.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = '';
+
+      posts.forEach(function(post) {
+        var date = post.createdAt ? new Date(post.createdAt).toLocaleDateString('pt-BR') : '';
+        var hasImage = post.featuredImage && post.featuredImage.startsWith('http');
+
+        var card = document.createElement('a');
+        card.className = 'post-card';
+        card.href = post.link || '/artigo.html?slug=' + post.slug;
+        card.target = post.link ? '_blank' : '_self';
+
+        card.innerHTML = `
+          <div class="post-card-image ${hasImage ? '' : 'no-image'}">
+            ${hasImage ? '<img src="' + escapeHtml(post.featuredImage) + '" alt="' + escapeHtml(post.title) + '" loading="lazy">' : '📰'}
+          </div>
+          <div class="post-card-body">
+            ${post.category ? '<div class="category">' + escapeHtml(post.category) + '</div>' : ''}
+            <h3>${escapeHtml(post.title) || 'Sem título'}</h3>
+            <p>${escapeHtml(post.metaDescription) || ''}</p>
+            <div class="meta">
+              ${date ? '<span>' + date + '</span>' : ''}
+              ${post.author ? '<span>• ' + escapeHtml(post.author) + '</span>' : ''}
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      var d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+
+    loadBlogPosts();
+  </script>
+</body>
+</html>
