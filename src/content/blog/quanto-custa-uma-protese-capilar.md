@@ -49,7 +49,7 @@ Quem decide pela prótese precisa pensar no orçamento de longo prazo: além do 
 
 Na Figaro's Barbearia, na R. Maceió 1274, Centro, em Presidente Epitácio-SP, a avaliação é gratuita. Você conversa com o especialista Wagner Pires, mostra sua área de queda e recebe um panorama claro de opções, com valores explicados sem letras miúdas.
 
-Se você quer saber quanto custa uma prótese capilar para o seu caso, não dá para responder com um número genérico. O caminho certo é agendar a [avaliação gratuita](/contato/) ou chamar no WhatsApp (18) 98118-8505. E, para uma visão mais completa do custo-benefício, leia também sobre [quanto custa manter e o que influencia o valor](/blog/quanto-custa-uma-protese-capilar/) — porque o investimento vai muito além da compra inicial.
+Se você quer saber quanto custa uma prótese capilar para o seu caso, não dá para responder com um número genérico. O caminho certo é agendar a [avaliação gratuita](/contato/) ou chamar no WhatsApp (18) 98118-8505. E, para entender o que está incluso e como é a experiência completa, conheça como funciona a [prótese capilar em Presidente Epitácio](/protese-capilar-presidente-epitacio/) — porque o investimento vai muito além da compra inicial.
 
 ## Perguntas frequentes
 

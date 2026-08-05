@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../data/site';
+import { siteConfig } from '../config/site.config';
 import { buildUrl, buildTitle } from '../lib/seo';
 
 interface Props {
@@ -27,11 +28,14 @@ const {
 const canonical = buildUrl(path);
 const fullTitle = buildTitle(title);
 const imageUrl = ogImage.startsWith('http') ? ogImage : buildUrl(ogImage);
+// Indexação controlada por variável de ambiente: enquanto o domínio oficial não
+// estiver em produção (PUBLIC_ALLOW_INDEXING != "true"), o site inteiro é noindex.
+const effectiveNoindex = noindex || !siteConfig.allowIndexing;
 ---
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="robots" content={effectiveNoindex ? 'noindex, nofollow' : 'index, follow'} />
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="format-detection" content="telephone=no" />
 <link rel="canonical" href={canonical} />

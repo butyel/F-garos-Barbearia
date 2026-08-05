@@ -1,3 +1,5 @@
+import { BUSINESS } from './site';
+
 export interface ServiceSection {
   h2: string;
   paragraphs: string[];
@@ -30,108 +32,79 @@ export const services: ServiceDetail[] = [
     title: 'Prótese Capilar em Presidente Epitácio',
     h1: 'Prótese Capilar em Presidente Epitácio',
     description:
-      'Prótese capilar com resultado natural em Presidente Epitácio (SP). Aplicação na mesma sessão, sem cirurgia. Avaliação gratuita e manutenção mensal.',
+      'Prótese capilar masculina em Presidente Epitácio com resultado natural, aplicação personalizada e manutenção especializada. Agende sua avaliação gratuita na Figaro’s Barbearia.',
     intro:
-      'Você recupera o cabelo no mesmo dia, com fios naturais fixados sobre uma base ultrafina e imperceptível. Sem cirurgia, sem dor e com um resultado que ninguém percebe que é prótese.',
+      'Você recupera o cabelo no mesmo dia, com fios naturais fixados sobre uma base ultrafina. Sem cirurgia, sem dor e com um resultado natural e discreto, pronto para o dia a dia.',
     offer: 'Avaliação gratuita com o especialista',
     icon: '💇',
     benefits: [
-      'Resultado natural e imperceptível',
+      'Resultado natural e discreto',
       'Sem cirurgia, sem cortes e sem cicatrizes',
       'Aplicação na mesma sessão',
-      'Material de alta qualidade',
+      'Fios naturais e personalizados',
       'Manutenção mensal disponível',
       'Ambiente climatizado e acolhedor',
     ],
     idealFor: [
-      'Quem tem entradas ou calvície avançada',
-      'Quem busca resultado imediato',
-      'Quem não quer passar por cirurgia',
+      'Homens com entradas ou calvície avançada',
+      'Quem sofre com queda de cabelo',
+      'Quem busca resultado imediato, sem cirurgia',
       'Quem já testou tratamentos sem resultado',
+      'Quem busca um visual mais jovem e renovado',
     ],
     sections: [
       {
         h2: 'Como funciona a prótese capilar',
         paragraphs: [
           'A prótese capilar usa fios naturais aplicados sobre uma base ultrafina, fixada no couro cabeludo e finalizada com um corte personalizado. O resultado acompanha o formato do seu rosto, a cor dos seus fios e o seu estilo.',
-          'Na Figaro’s Barbearia, em Presidente Epitácio, todo o processo é feito por Wagner Pires, especialista em prótese capilar masculina. Você chega com a área de queda exposta e sai com o cabelo completo, ainda na mesma sessão.',
+          'Na Figaro’s Barbearia, em Presidente Epitácio, todo o processo é conduzido por Wagner Pires, especialista em prótese capilar masculina. Você chega com a área de queda exposta e sai com o cabelo completo, ainda na mesma sessão.',
         ],
       },
       {
         h2: 'Vantagens de fazer em Presidente Epitácio',
         paragraphs: [
-          'Fazer a prótese capilar aqui significa ter acompanhamento próximo e manutenção sem deslocamento. Você não precisa viajar para cuidar do seu cabelo: a manutenção mensal é feita na R. Maceió, 1274, no centro da cidade.',
+          'Fazer a prótese capilar aqui significa ter acompanhamento próximo e manutenção sem deslocamento. Você não precisa viajar para cuidar do cabelo: a manutenção é feita na R. Maceió, 1274, no centro da cidade.',
           'Além disso, o atendimento é próximo e sem pressa. Você entende o processo, tira todas as dúvidas e só então decide o que é melhor para o seu caso.',
         ],
       },
-    ],
-    faq: [
-      {
-        q: 'Quanto custa uma prótese capilar em Presidente Epitácio?',
-        a: 'O valor depende do tipo de prótese, da qualidade dos fios e da técnica de aplicação. O ideal é fazer uma avaliação gratuita para receber um orçamento exato para o seu caso.',
-      },
-      {
-        q: 'A prótese capilar fica natural?',
-        a: 'Sim. Com fios naturais, base ultrafina e corte personalizado, o resultado é imperceptível. Ninguém percebe que você usa prótese.',
-      },
-      {
-        q: 'Preciso raspar a cabeça para usar prótese capilar?',
-        a: 'Em muitos casos, a área de aplicação é preparada para receber a prótese. Tudo é definido na avaliação, de acordo com a extensão da queda.',
-      },
-    ],
-    whatsappKey: 'service',
-    related: ['protese-capilar-masculina-presidente-epitacio', 'colocacao-protese-capilar-presidente-epitacio'],
-  },
-  {
-    slug: 'protese-capilar-masculina-presidente-epitacio',
-    title: 'Prótese Capilar Masculina em Presidente Epitácio',
-    h1: 'Prótese Capilar Masculina em Presidente Epitácio',
-    description:
-      'Prótese capilar masculina em Presidente Epitácio para calvície e queda de cabelo. Resultado natural, sem cirurgia, aplicado na mesma sessão. Avaliação gratuita.',
-    intro:
-      'A prótese capilar masculina é hoje a resposta mais rápida para quem sofre com entradas e calvície. Em poucas horas você recupera a densidade, o contorno e a autoestima, sem depender de meses de tratamento.',
-    offer: 'Avaliação gratuita e personalizada',
-    icon: '💈',
-    benefits: [
-      'Resultado imediato, na mesma sessão',
-      'Fios naturais e personalizados',
-      'Sem necessidade de cirurgia',
-      'Ideal para entradas e calvície',
-      'Manutenção simples e mensal',
-    ],
-    idealFor: [
-      'Homens com entradas avançadas',
-      'Quem sofre com queda de cabelo',
-      'Quem evita procedimentos cirúrgicos',
-      'Quem busca um visual com mais idade aparente',
-    ],
-    sections: [
       {
         h2: 'Para quem é a prótese capilar masculina',
         paragraphs: [
-          'A prótese capilar masculina atende desde as primeiras entradas até a calvície avançada. Quanto antes você procurar, mais fácil é preservar o couro cabeludo e escolher a técnica ideal.',
-          'Na avaliação gratuita, Wagner Pires analisa o seu caso, conversa sobre as suas expectativas e explica as opções de base, fio e manutenção, sem compromisso.',
+          'A prótese capilar masculina atende desde as primeiras entradas até a calvície avançada. Quanto antes você procurar, mais fácil preservar o couro cabeludo e escolher a técnica ideal.',
+          'Na avaliação gratuita, o especialista analisa o seu caso, conversa sobre as suas expectativas e explica as opções de base, fio e manutenção, sem compromisso.',
         ],
       },
       {
         h2: 'O que muda no seu dia a dia',
         paragraphs: [
-          'Você volta a passar a mão no cabelo, usar cortes que antes ficavam expostos e se olhar no espelho com confiança. A manutenção é rápida, mensal, e acontece em Presidente Epitácio.',
+          'Você volta a passar a mão no cabelo, usar cortes que antes ficavam expostos e a se olhar no espelho com confiança. A manutenção é rápida, mensal, e acontece em Presidente Epitácio.',
         ],
       },
     ],
     faq: [
+      {
+        q: 'A prótese capilar fica natural?',
+        a: 'Sim. Quando bem escolhida, personalizada e aplicada, uma prótese capilar pode oferecer um resultado muito natural e discreto. Com fios naturais, base ultrafina e corte personalizado, ela se harmoniza com o seu visual.',
+      },
+      {
+        q: 'Quanto custa uma prótese capilar em Presidente Epitácio?',
+        a: 'O valor depende do tipo de prótese, da qualidade dos fios e da técnica de aplicação. O ideal é fazer uma avaliação gratuita para receber um orçamento exato para o seu caso.',
+      },
+      {
+        q: 'Preciso raspar a cabeça para usar prótese capilar?',
+        a: 'Em muitos casos, a área de aplicação é preparada para receber a prótese. Tudo é definido na avaliação, de acordo com a extensão da queda.',
+      },
       {
         q: 'A prótese capilar masculina estraga o cabelo que ainda tenho?',
         a: 'Não. Com a preparação e a manutenção corretas, o couro cabeludo permanece saudável. O acompanhamento mensal garante que tudo continue em ordem.',
       },
       {
         q: 'Posso lavar e pentear a prótese normalmente?',
-        a: 'Sim. Após a aplicação você recebe as orientações de lavagem e cuidado. Com os produtos certos, ela mantém o aspecto natural por muito mais tempo.',
+        a: 'Sim. Após a aplicação você recebe as orientações de lavagem e cuidado. Com os produtos certos, ela mantém o aspecto natural por mais tempo.',
       },
     ],
     whatsappKey: 'service',
-    related: ['solucao-para-calvicie-presidente-epitacio', 'manutencao-protese-capilar-presidente-epitacio'],
+    related: ['manutencao-protese-capilar-presidente-epitacio', 'colocacao-protese-capilar-presidente-epitacio'],
   },
   {
     slug: 'hair-system-presidente-epitacio',
@@ -145,9 +118,9 @@ export const services: ServiceDetail[] = [
     icon: '🧵',
     benefits: [
       'Base de aplicação moderna e confortável',
-      'Fios naturais 100% personalizados',
+      'Fios naturais personalizados',
       'Fixação segura para o dia a dia',
-      'Resultado imediato e imperceptível',
+      'Resultado imediato e natural',
       'Manutenção periódica acompanhada',
     ],
     idealFor: [
@@ -161,7 +134,7 @@ export const services: ServiceDetail[] = [
         h2: 'O que é o hair system',
         paragraphs: [
           'O hair system é composto por fios naturais costurados ou colados em uma base ultrafina. Ele é produzido para imitar exatamente o seu cabelo: cor, textura, densidade e direção do crescimento.',
-          'Na aplicação, a base é fixada na área de queda e o conjunto é cortado e modelado. O resultado acompanha o seu estilo e é impossível de perceber a olho nu.',
+          'Na aplicação, a base é fixada na área de queda e o conjunto é cortado e modelado. O resultado acompanha o seu estilo e fica muito próximo do cabelo natural.',
         ],
       },
       {
@@ -322,14 +295,14 @@ export const services: ServiceDetail[] = [
       },
     ],
     whatsappKey: 'service',
-    related: ['protese-capilar-masculina-presidente-epitacio', 'protese-capilar-presidente-epitacio'],
+    related: ['protese-capilar-presidente-epitacio', 'manutencao-protese-capilar-presidente-epitacio'],
   },
   {
     slug: 'barbearia-presidente-epitacio',
     title: 'Barbearia em Presidente Epitácio',
     h1: 'Barbearia em Presidente Epitácio',
     description:
-      'Barbearia em Presidente Epitácio no centro da cidade. Corte masculino, barba, prótese capilar e manutenção. Atendimento premium com avaliação 4,8 estrelas.',
+      `Barbearia em Presidente Epitácio no centro da cidade. Corte masculino, barba, prótese capilar e manutenção. Atendimento premium com avaliação ${BUSINESS.rating.ratingValue} estrelas no Google.`,
     intro:
       'A Figaro’s é a barbearia de Presidente Epitácio para quem exige qualidade. Do corte de cabelo à prótese capilar, tudo é feito com técnica, cuidado e acabamento impecável.',
     offer: 'Atendimento premium no centro da cidade',
@@ -339,7 +312,7 @@ export const services: ServiceDetail[] = [
       'Ambiente climatizado e acolhedor',
       'Profissionais especializados',
       'Corte, barba e prótese capilar',
-      'Avaliação 4,8 estrelas no Google',
+      `Avaliação ${BUSINESS.rating.ratingValue} estrelas no Google`,
     ],
     idealFor: [
       'Moradores de Presidente Epitácio',
@@ -351,7 +324,7 @@ export const services: ServiceDetail[] = [
       {
         h2: 'Uma barbearia completa no centro',
         paragraphs: [
-          'Localizada na R. Maceió, 1274, no centro de Presidente Epitácio, a Figaro’s reúne serviços masculinos completos: corte, barba, pigmentação e prótese capilar, com mais de 114 avaliações positivas no Google.',
+          `Localizada na R. Maceió, 1274, no centro de Presidente Epitácio, a Figaro’s reúne serviços masculinos completos: corte, barba, pigmentação e prótese capilar, com +${BUSINESS.rating.ratingCount} avaliações positivas no Google.`,
         ],
       },
     ],
@@ -439,7 +412,7 @@ export const services: ServiceDetail[] = [
       {
         h2: 'Barba com acabamento premium',
         paragraphs: [
-          'O serviço inclui limpeza, hidratação, desenho e finalização. Se você faz a barba junto com o corte, saem melhores ainda — e economiza tempo.',
+          'O serviço inclui limpeza, hidratação, desenho e finalização. Se você faz a barba junto com o corte, sai ainda melhor — e economiza tempo.',
         ],
       },
     ],

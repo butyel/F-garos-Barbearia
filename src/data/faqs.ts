@@ -6,7 +6,7 @@ export interface FaqItem {
 export const faqs: FaqItem[] = [
   {
     q: 'Prótese capilar fica natural?',
-    a: 'Sim. Com fios naturais, base ultrafina e corte personalizado, o resultado é imperceptível. Ninguém percebe que você usa prótese capilar.',
+    a: 'Sim. Quando bem escolhida, personalizada e aplicada, a prótese capilar pode oferecer um resultado muito natural e discreto. Fios naturais, base ultrafina e corte personalizado ajudam a harmonizar com o seu visual.',
   },
   {
     q: 'Quanto custa uma prótese capilar?',

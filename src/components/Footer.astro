@@ -1,7 +1,6 @@
 ---
 import { BUSINESS, SITE } from '../data/site';
 import { whatsappLink } from '../data/site';
-import { services } from '../data/services';
 ---
 
 <footer class="site-footer">
@@ -45,12 +44,12 @@ import { services } from '../data/services';
         <h4>Contato</h4>
         <address>
           <strong>{BUSINESS.name}</strong>
-          R. Maceió, 1274 - Centro<br />
-          Presidente Epitácio - SP, 19470-000<br />
-          <a href={`tel:+${BUSINESS.phoneInternational}`}>{(BUSINESS.phone)}</a>
-          <a href={whatsappLink('avaliacao')} target="_blank" rel="noopener noreferrer">WhatsApp (18) 98118-8505</a>
+          {BUSINESS.address.streetAddress} - {BUSINESS.address.locality}<br />
+          {BUSINESS.address.locality} - {BUSINESS.address.region}, {BUSINESS.address.postalCode}<br />
+          <a href={`tel:+${BUSINESS.phoneInternational}`}>{BUSINESS.phone}</a>
+          <a href={whatsappLink('avaliacao')} target="_blank" rel="noopener noreferrer">WhatsApp {BUSINESS.phone}</a>
           <a href={BUSINESS.instagram} target="_blank" rel="noopener noreferrer">{BUSINESS.instagramHandle}</a>
-          Segunda a Sábado: 09:00 - 18:00
+          {BUSINESS.hours.map((h) => `${h.day}: ${h.hours}`).join(' • ')}
         </address>
       </div>
     </div>

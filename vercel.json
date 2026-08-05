@@ -1,5 +1,14 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "redirects": [
+    {
+      "source": "/protese-capilar-masculina-presidente-epitacio/:path*",
+      "destination": "/protese-capilar-presidente-epitacio/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/protese-capilar-masculina-presidente-epitacio",
+      "destination": "/protese-capilar-presidente-epitacio/",
+      "permanent": true
+    }
   ]
 }

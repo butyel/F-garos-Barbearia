@@ -65,12 +65,18 @@ featured: false
 - **Perguntas frequentes**: `src/data/faqs.ts`.
 - **Painel admin**: `/admin/` (protegido por senha, `noindex`). Senha via `PUBLIC_ADMIN_PASSWORD`.
 
-## Ambiente
+## Ambiente / SEO
 
 Copie `.env.example` para `.env` e defina:
 
+- `PUBLIC_SITE_URL` — URL canônica oficial. Enquanto vazio, o site usa o domínio Vercel temporário.
+- `PUBLIC_ALLOW_INDEXING` — `"true"` apenas no domínio oficial libera indexação (gerar `index, follow`, canonical, sitemap e robots com Sitemap). Qualquer outro valor mantém o site inteiro em `noindex, nofollow`.
 - `PUBLIC_ADMIN_PASSWORD` — senha do painel `/admin/`
 - `PUBLIC_GA4_ID` — ID do Google Analytics 4 (opcional)
+
+Todas as URLs absolutas (canonical, Open Graph, Twitter, JSON-LD, sitemap, breadcrumb) são geradas a partir de `PUBLIC_SITE_URL` (fonte única em `src/config/site.config.ts`). O NAP (endereço, telefone, WhatsApp, horários, Instagram, geo e avaliações) também é centralizado nesse arquivo.
+
+**Rota principal (money page):** `/protese-capilar-presidente-epitacio/`
 
 ## Deploy (Vercel)
 

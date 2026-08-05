@@ -4,6 +4,7 @@ import CTA from '../components/CTA.astro';
 import { rating, testimonials } from '../data/testimonials';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+import { personSchema } from '../lib/schema';
 ---
 
 <PageLayout
@@ -11,6 +12,7 @@ import LocalBusinessSection from '../components/LocalBusinessSection.astro';
   description="Conheça a Figaro's Barbearia, especializada em prótese capilar masculina em Presidente Epitácio (SP). Resultado natural em uma única sessão, com avaliação 4,8 estrelas."
   path="/sobre/"
   h1={"Sobre a <span style=\"color:var(--gold)\">Figaro's</span>"}
+  schema={[personSchema()]}
 >
   <section class="section section--black">
     <div class="container">
@@ -19,7 +21,7 @@ import LocalBusinessSection from '../components/LocalBusinessSection.astro';
           <h2>Quem somos</h2>
           <p style="margin-bottom:1rem;">
             A Figaro's Barbearia é referência em prótese capilar masculina no centro de Presidente Epitácio.
-            Criada para devolver o cabelo, a autoestima e a confiança — com um resultado que ninguém percebe.
+            Criada para devolver o cabelo, a autoestima e a confiança — com um resultado natural e discreto.
           </p>
           <p style="margin-bottom:1.5rem;">
             Sob o comando de <strong>Wagner Pires</strong>, barbeiro e especialista em prótese capilar,
@@ -29,7 +31,7 @@ import LocalBusinessSection from '../components/LocalBusinessSection.astro';
           <div class="card" style="margin-top:1rem;">
             <h3>Nosso compromisso</h3>
             <ul class="features-list">
-              <li>Resultado natural e imperceptível</li>
+              <li>Resultado natural e discreto</li>
               <li>Sem cirurgia e sem dor</li>
               <li>{rating.value}★ no Google ({rating.count}+ avaliações)</li>
               <li>Manutenção e acompanhamento mensais</li>

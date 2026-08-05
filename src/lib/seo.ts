@@ -17,5 +17,6 @@ export function buildUrl(path: string) {
 }
 
 export function buildTitle(title: string) {
-  return title === SITE.name ? SITE.name : `${title} | ${SITE.name}`;
+  if (title === SITE.name || title.includes(SITE.name)) return title;
+  return `${title} | ${SITE.name}`;
 }

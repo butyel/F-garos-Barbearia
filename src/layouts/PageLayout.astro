@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import CTA from '../components/CTA.astro';
+import { breadcrumbs } from '../lib/schema';
 
 interface Props {
   title: string;
@@ -24,9 +25,12 @@ const {
   noindex = false,
   schema = [],
 } = Astro.props;
+
+// BreadcrumbList automático quando a página informa trilha visível.
+const allSchema = crumbs && crumbs.length > 0 ? [...schema, breadcrumbs(crumbs)] : schema;
 ---
 
-<BaseLayout title={title} description={description} path={path} noindex={noindex} schema={schema}>
+<BaseLayout title={title} description={description} path={path} noindex={noindex} schema={allSchema}>
   <section class="page-hero">
     <div class="container">
       {crumbs && crumbs.length > 0 && <Breadcrumb items={crumbs} />}

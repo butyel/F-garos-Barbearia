@@ -67,6 +67,26 @@ export function website() {
   };
 }
 
+export function personSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${SITE.url}/#person-wagner-pires`,
+    name: 'Wagner Pires',
+    jobTitle: 'Barbeiro e Especialista em Prótese Capilar',
+    worksFor: { '@id': `${SITE.url}/#business` },
+    worksForAddress: {
+      '@type': 'PostalAddress',
+      streetAddress: BUSINESS.address.streetAddress,
+      addressLocality: BUSINESS.address.locality,
+      addressRegion: BUSINESS.address.region,
+      postalCode: BUSINESS.address.postalCode,
+      addressCountry: BUSINESS.address.country,
+    },
+    areaServed: 'Presidente Epitácio (SP) e região',
+  };
+}
+
 export function organization() {
   return {
     '@context': 'https://schema.org',

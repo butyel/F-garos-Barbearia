@@ -24,8 +24,8 @@ const { showMap = true } = Astro.props;
           <div class="contact-details">
             <h4>Endereço</h4>
             <p>
-              R. Maceió, 1274 - Centro<br />
-              Presidente Epitácio - SP, 19470-000
+              {BUSINESS.address.streetAddress} - {BUSINESS.address.locality}<br />
+              {BUSINESS.address.locality} - {BUSINESS.address.region}, {BUSINESS.address.postalCode}
             </p>
           </div>
         </div>

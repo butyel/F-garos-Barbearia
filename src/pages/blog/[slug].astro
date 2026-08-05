@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTA from '../../components/CTA.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { articleSchema } from '../../lib/schema';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { articleSchema, breadcrumbs } from '../../lib/schema';
 import { whatsappLink } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -20,6 +20,7 @@ interface Props {
 
 const { post } = Astro.props;
 const { data } = post;
+const { Content } = await render(post);
 const allPosts = await getCollection('blog');
 const related = allPosts
   .filter((p) => !p.data.draft && p.id !== post.id)
@@ -38,6 +39,11 @@ const schema = [
     modifiedTime: data.updatedDate ? isoDate(data.updatedDate) : undefined,
     author: data.author,
   }),
+  breadcrumbs([
+    { name: 'Início', path: '/' },
+    { name: 'Blog', path: '/blog/' },
+    { name: data.title, path: `/blog/${post.id}/` },
+  ]),
 ];
 ---
 
@@ -62,7 +68,7 @@ const schema = [
         </div>
         <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);">{data.title}</h1>
         <div class="article-meta">
-          <span>{data.author}</span>
+          <a href="/sobre/" class="article-author">{data.author}</a>
           <span>Atualizado em {dateStr(data.updatedDate ?? data.pubDate)}</span>
         </div>
       </div>
@@ -82,22 +88,16 @@ const schema = [
           />
         )}
         <div class="prose">
-          <slot />
+          <Content />
         </div>
-
-        {data.tags.length > 0 && (
-          <div class="tags" style="margin-top:2.5rem;">
-            {data.tags.map((tag) => (
-              <a class="tag" href="/blog/" rel="tag">#{tag}</a>
-            ))}
-          </div>
-        )}
 
         <div class="note" style="margin-top:2rem;">
           <strong>Ficou com uma dúvida sobre prótese capilar?</strong>{' '}
-          Fale com o especialista no{' '}
+          Conheça como funciona a{' '}
+          <a href="/protese-capilar-presidente-epitacio/">prótese capilar em Presidente Epitácio</a>, tire dúvidas
+          no{' '}
           <a href={whatsappLink('blog')} target="_blank" rel="noopener noreferrer">WhatsApp</a> ou agende sua{' '}
-          <a href="/contato/">avaliação gratuita</a> em Presidente Epitácio.
+          <a href="/contato/">avaliação gratuita</a>.
         </div>
       </div>
     </section>
