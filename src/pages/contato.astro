@@ -1,0 +1,90 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CTA from '../components/CTA.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+import { BUSINESS, whatsappLink } from '../data/site';
+---
+
+<PageLayout
+  title="Contato — Figaro's Barbearia em Presidente Epitácio"
+  description="Fale com a Figaro's Barbearia. WhatsApp, telefone, endereço e horário no centro de Presidente Epitácio (SP). Agende sua avaliação gratuita de prótese capilar."
+  path="/contato/"
+  h1={"Fale <span style=\"color:var(--gold)\">com a gente</span>"}
+>
+  <section class="section section--black">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>Entre em contato</h2>
+          <p style="margin-bottom:1.5rem;">
+            O jeito mais rápido de agendar é pelo WhatsApp. Você também pode ligar ou passar na barbearia.
+          </p>
+
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📱</span>
+            <div class="contact-details">
+              <h4>WhatsApp</h4>
+              <p>
+                <a href={whatsappLink('home')} class="btn btn--wa" target="_blank" rel="noopener noreferrer">
+                  Conversar no WhatsApp
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📞</span>
+            <div class="contact-details">
+              <h4>Telefone</h4>
+              <p><a href={`tel:+${BUSINESS.phoneInternational}`}>{BUSINESS.phone}</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📍</span>
+            <div class="contact-details">
+              <h4>Endereço</h4>
+              <p>R. Maceió, 1274 - Centro<br />Presidente Epitácio - SP, 19470-000</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">🕐</span>
+            <div class="contact-details">
+              <h4>Horário</h4>
+              <p>Segunda a Sábado: 09:00 - 18:00</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📷</span>
+            <div class="contact-details">
+              <h4>Instagram</h4>
+              <p>
+                <a href={BUSINESS.instagram} target="_blank" rel="noopener noreferrer">{BUSINESS.instagramHandle}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <iframe
+            title="Mapa — Figaro's Barbearia, R. Maceió 1274, Presidente Epitácio - SP"
+            src={BUSINESS.mapsEmbed}
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <LocalBusinessSection showMap={false} />
+
+  <CTA
+    title="Pronto para agendar?"
+    description="Fale com o especialista e garanta sua avaliação gratuita em Presidente Epitácio."
+    whatsappKey="avaliacao"
+  />
+</PageLayout>

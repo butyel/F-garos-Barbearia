@@ -1,0 +1,28 @@
+---
+import { breadcrumbs } from '../lib/schema';
+
+interface Props {
+  items: { name: string; path: string }[];
+}
+
+const { items } = Astro.props;
+const crumbs = [{ name: 'Início', path: '/' }, ...items];
+---
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <ol>
+    {crumbs.map((item, i) => {
+      const isLast = i === crumbs.length - 1;
+      return (
+        <li>
+          {isLast ? (
+            <span aria-current="page">{item.name}</span>
+          ) : (
+            <a href={item.path}>{item.name}</a>
+          )}
+        </li>
+      );
+    })}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbs(crumbs))} />

@@ -1,0 +1,89 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CTA from '../components/CTA.astro';
+import { rating, testimonials } from '../data/testimonials';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+---
+
+<PageLayout
+  title="Sobre a Figaro's Barbearia"
+  description="Conheça a Figaro's Barbearia, especializada em prótese capilar masculina em Presidente Epitácio (SP). Resultado natural em uma única sessão, com avaliação 4,8 estrelas."
+  path="/sobre/"
+  h1={"Sobre a <span style=\"color:var(--gold)\">Figaro's</span>"}
+>
+  <section class="section section--black">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>Quem somos</h2>
+          <p style="margin-bottom:1rem;">
+            A Figaro's Barbearia é referência em prótese capilar masculina no centro de Presidente Epitácio.
+            Criada para devolver o cabelo, a autoestima e a confiança — com um resultado que ninguém percebe.
+          </p>
+          <p style="margin-bottom:1.5rem;">
+            Sob o comando de <strong>Wagner Pires</strong>, barbeiro e especialista em prótese capilar,
+            a barbearia une técnica apurada, materiais de qualidade e atendimento próximo. Mais de
+            {rating.count} clientes avaliaram o atendimento no Google, com nota {rating.value} estrelas.
+          </p>
+          <div class="card" style="margin-top:1rem;">
+            <h3>Nosso compromisso</h3>
+            <ul class="features-list">
+              <li>Resultado natural e imperceptível</li>
+              <li>Sem cirurgia e sem dor</li>
+              <li>{rating.value}★ no Google ({rating.count}+ avaliações)</li>
+              <li>Manutenção e acompanhamento mensais</li>
+              <li>Atendimento humano, sem pressa</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <img
+            src="/images/especialista-wagner-pires.webp"
+            alt="Wagner Pires, especialista em prótese capilar da Figaro's Barbearia em Presidente Epitácio"
+            width="900"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            style="border-radius:8px;width:100%;"
+          />
+          <p class="specialty" style="text-align:center;margin-top:1rem;">Wagner Pires — Barbeiro e Especialista em Prótese Capilar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--charcoal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nossa <span style="color:var(--gold)">filosofia</span></h2>
+        <p>Tratamento que combina técnica, estética e cuidado com cada cliente.</p>
+      </div>
+      <div class="section-narrow" style="max-width:820px;margin:0 auto;">
+        <p style="margin-bottom:1rem;">
+          Aqui você não é só mais um corte. Você é recebido, ouvido e atendido com atenção do início ao fim.
+          Do diagnóstico do couro cabeludo ao ajuste final, cada detalhe é pensado para você sair — e continuar — com o visual que merece.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      <div class="section-header">
+        <h2>O que nossos <span style="color:var(--gold)">clientes dizem</span></h2>
+      </div>
+      <div class="grid-3">
+        {testimonials.map((t) => <TestimonialCard testimonial={t} />)}
+      </div>
+    </div>
+  </section>
+
+  <LocalBusinessSection />
+
+  <CTA
+    title="Vamos conversar sobre o seu caso?"
+    description="Agende uma avaliação gratuita e descubra o caminho mais rápido para o seu visual."
+    whatsappKey="avaliacao"
+  />
+</PageLayout>

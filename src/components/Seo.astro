@@ -1,0 +1,63 @@
+---
+import { SITE } from '../data/site';
+import { buildUrl, buildTitle } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage = SITE.ogImage,
+  ogType = 'website',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const canonical = buildUrl(path);
+const fullTitle = buildTitle(title);
+const imageUrl = ogImage.startsWith('http') ? ogImage : buildUrl(ogImage);
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={fullTitle} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content={SITE.name} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+{
+  publishedTime && <meta property="article:published_time" content={publishedTime} />
+}
+{
+  modifiedTime && <meta property="article:modified_time" content={modifiedTime} />
+}

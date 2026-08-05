@@ -1,0 +1,53 @@
+---
+import { SITE } from '../data/site';
+import { whatsappLink } from '../data/site';
+
+const nav = [
+  { href: '/', label: 'Início' },
+  { href: '/protese-capilar-presidente-epitacio/', label: 'Prótese Capilar' },
+  { href: '/resultados/', label: 'Resultados' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/sobre/', label: 'Sobre' },
+  { href: '/contato/', label: 'Contato' },
+];
+
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label={`${SITE.name} — página inicial`}>
+        {SITE.name}
+        <span>Prótese Capilar • Pres. Epitácio</span>
+      </a>
+
+      <button
+        class="mobile-menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="navMenu"
+        data-nav-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu" data-nav-menu aria-label="Navegação principal">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link"
+            aria-current={current === item.href || (item.href !== '/' && current.startsWith(item.href)) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href={whatsappLink('avaliacao')} class="btn" target="_blank" rel="noopener noreferrer">
+          Agendar Avaliação
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

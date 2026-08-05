@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappLink } from '../data/site';
+---
+
+<BaseLayout
+  title="Página não encontrada"
+  description="A página que você procura não foi encontrada. Conheça a prótese capilar em Presidente Epitácio da Figaro's Barbearia."
+  path="/404/"
+  noindex
+>
+  <section class="page-hero" style="text-align:center;">
+    <div class="container">
+      <p class="specialty" style="font-size:4rem;line-height:1;">404</p>
+      <h1>Página não encontrada</h1>
+      <p class="lead" style="margin:0 auto 2rem;max-width:520px;">
+        O que você procurava não está aqui — mas o seu novo visual pode estar a uma conversa de distância.
+      </p>
+      <div class="hero-cta" style="justify-content:center;">
+        <a href="/" class="btn btn--primary">Voltar para o início</a>
+        <a href="/protese-capilar-presidente-epitacio/" class="btn btn--outline">Ver prótese capilar</a>
+        <a href={whatsappLink('home')} class="btn btn--wa" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

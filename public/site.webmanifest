@@ -1,0 +1,18 @@
+{
+  "name": "Figaro's Barbearia — Prótese Capilar em Presidente Epitácio",
+  "short_name": "Figaro's",
+  "description": "Prótese capilar masculina com resultado natural em Presidente Epitácio (SP). Avaliação gratuita e manutenção mensal.",
+  "lang": "pt-BR",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

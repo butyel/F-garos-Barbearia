@@ -1,0 +1,32 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CTA from '../components/CTA.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+import { faqs } from '../data/faqs';
+---
+
+<PageLayout
+  title="Perguntas Frequentes sobre Prótese Capilar"
+  description="Respostas diretas sobre prótese capilar: preço, duração, naturalidade, banho, manutenção e mais. Especialista em Presidente Epitácio (SP)."
+  path="/faq/"
+  h1={"Perguntas <span style=\"color:var(--gold)\">frequentes</span>"}
+>
+  <section class="section section--black">
+    <div class="container">
+      <p class="lead" style="margin-bottom:2rem;">
+        Reunimos as dúvidas mais comuns sobre prótese capilar. Se a sua não estiver aqui,
+        é só chamar no WhatsApp.
+      </p>
+      <FaqSection items={faqs} />
+    </div>
+  </section>
+
+  <LocalBusinessSection />
+
+  <CTA
+    title="Ficou com alguma dúvida?"
+    description="Fale com o especialista pelo WhatsApp e tire todas as suas perguntas."
+    whatsappKey="home"
+  />
+</PageLayout>

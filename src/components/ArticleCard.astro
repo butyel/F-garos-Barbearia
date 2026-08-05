@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  category: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  image?: string;
+}
+
+const { title, slug, category, description, pubDate, author, image } = Astro.props;
+const date = pubDate.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<a href={`/blog/${slug}/`} class="post-card">
+  <div class="post-card-image">
+    {image ? (
+      <img src={image} alt={title} loading="lazy" decoding="async" />
+    ) : (
+      <span class="sr-only">{title}</span>
+    )}
+  </div>
+  <div class="post-card-body">
+    <div class="category">{category}</div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="meta">
+      <span>{date}</span>
+      <span>• {author}</span>
+    </div>
+  </div>
+</a>

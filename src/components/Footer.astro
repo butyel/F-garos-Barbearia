@@ -1,0 +1,66 @@
+---
+import { BUSINESS, SITE } from '../data/site';
+import { whatsappLink } from '../data/site';
+import { services } from '../data/services';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          {SITE.name}
+          <span>Prótese Capilar • Pres. Epitácio</span>
+        </a>
+        <p>
+          Barbearia especializada em prótese capilar masculina no centro de Presidente Epitácio (SP).
+          Resultado natural em uma única sessão, com manutenção mensal.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/protese-capilar-presidente-epitacio/">Prótese Capilar</a></li>
+          <li><a href="/manutencao-protese-capilar-presidente-epitacio/">Manutenção de Prótese</a></li>
+          <li><a href="/hair-system-presidente-epitacio/">Hair System</a></li>
+          <li><a href="/corte-masculino-presidente-epitacio/">Corte Masculino</a></li>
+          <li><a href="/barba-presidente-epitacio/">Barba</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="/">Início</a></li>
+          <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="/resultados/">Resultados</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/faq/">Perguntas Frequentes</a></li>
+          <li><a href="/contato/">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <address>
+          <strong>{BUSINESS.name}</strong>
+          R. Maceió, 1274 - Centro<br />
+          Presidente Epitácio - SP, 19470-000<br />
+          <a href={`tel:+${BUSINESS.phoneInternational}`}>{(BUSINESS.phone)}</a>
+          <a href={whatsappLink('avaliacao')} target="_blank" rel="noopener noreferrer">WhatsApp (18) 98118-8505</a>
+          <a href={BUSINESS.instagram} target="_blank" rel="noopener noreferrer">{BUSINESS.instagramHandle}</a>
+          Segunda a Sábado: 09:00 - 18:00
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} {SITE.name} • Prótese Capilar Masculina em Presidente Epitácio - SP</p>
+      <div class="footer-links">
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>

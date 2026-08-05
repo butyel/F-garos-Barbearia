@@ -1,0 +1,43 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CTA from '../components/CTA.astro';
+import Gallery from '../components/Gallery.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+
+const galleryItems = [
+  { src: '/images/resultado-protese-capilar-caso1.webp', alt: "Antes e depois de prótese capilar masculina — caso 1, Figaro's Barbearia", caption: 'Antes e depois — caso 1' },
+  { src: '/images/resultado-protese-capilar-caso2.webp', alt: "Antes e depois de prótese capilar masculina — caso 2, Figaro's Barbearia", caption: 'Antes e depois — caso 2' },
+  { src: '/images/resultado-protese-capilar-caso3.webp', alt: "Resultado real de prótese capilar masculina na Figaro's Barbearia, Presidente Epitácio", caption: 'Resultado real — cliente' },
+  { src: '/images/resultado-protese-capilar-caso4.webp', alt: "Resultado real de prótese capilar masculina na Figaro's Barbearia, Presidente Epitácio", caption: 'Resultado real — cliente' },
+  { src: '/images/resultado-protese-capilar-caso5.webp', alt: "Resultado real de prótese capilar masculina na Figaro's Barbearia, Presidente Epitácio", caption: 'Resultado real — cliente' },
+];
+---
+
+<PageLayout
+  title="Resultados — Prótese Capilar"
+  description="Veja resultados reais de prótese capilar masculina na Figaro's Barbearia, em Presidente Epitácio. Antes e depois com resultado natural e imediato."
+  path="/resultados/"
+  h1={"Resultados <span style=\"color:var(--gold)\">reais</span>"}
+>
+  <section class="section section--black">
+    <div class="container">
+      <p class="lead" style="margin-bottom:2rem;">
+        Cada caso é único. As fotos abaixo mostram transformações realizadas na Figaro's Barbearia,
+        com resultado na mesma sessão. Novo caso? Agende uma avaliação gratuita.
+      </p>
+      <Gallery items={galleryItems} />
+      <div class="note" style="margin-top:2rem;">
+        As imagens são de clientes reais atendidos em Presidente Epitácio. Resultados podem variar de
+        acordo com cada caso e seguem as orientações de manutenção.
+      </div>
+    </div>
+  </section>
+
+  <LocalBusinessSection />
+
+  <CTA
+    title="Quer ver o resultado no seu caso?"
+    description="Agende uma avaliação gratuita e veja como ficaria a sua transformação."
+    whatsappKey="avaliacao"
+  />
+</PageLayout>

@@ -1,0 +1,97 @@
+---
+import { BUSINESS } from '../data/site';
+import { whatsappLink } from '../data/site';
+
+interface Props {
+  showMap?: boolean;
+}
+
+const { showMap = true } = Astro.props;
+---
+
+<section class="section section--black" id="localizacao">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Localização e <span>Contato</span></h2>
+        <p>
+          Estamos no centro de Presidente Epitácio. Agende sua avaliação pelo WhatsApp ou venha
+          fazer uma visita.
+        </p>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">📍</span>
+          <div class="contact-details">
+            <h4>Endereço</h4>
+            <p>
+              R. Maceió, 1274 - Centro<br />
+              Presidente Epitácio - SP, 19470-000
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">📞</span>
+          <div class="contact-details">
+            <h4>Telefone / WhatsApp</h4>
+            <p>
+              <a href={`tel:+${BUSINESS.phoneInternational}`}>{BUSINESS.phone}</a> •{' '}
+              <a href={whatsappLink('home')} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">🕐</span>
+          <div class="contact-details">
+            <h4>Horário de Funcionamento</h4>
+            <p>{BUSINESS.hours[0].day}: {BUSINESS.hours[0].hours}</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">⭐</span>
+          <div class="contact-details">
+            <h4>Avaliação no Google</h4>
+            <p>{BUSINESS.rating.ratingValue} estrelas ({BUSINESS.rating.ratingCount} avaliações)</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon" aria-hidden="true">📷</span>
+          <div class="contact-details">
+            <h4>Instagram</h4>
+            <p>
+              <a href={BUSINESS.instagram} target="_blank" rel="noopener noreferrer">
+                {BUSINESS.instagramHandle}
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=R.+Maceió+1274+Presidente+Epitácio"
+            class="btn btn--outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Como chegar no Google Maps
+          </a>
+        </p>
+      </div>
+
+      {showMap && (
+        <div class="contact-map">
+          <iframe
+            title="Mapa — Figaro's Barbearia, R. Maceió, 1274, Centro, Presidente Epitácio - SP"
+            src={BUSINESS.mapsEmbed}
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

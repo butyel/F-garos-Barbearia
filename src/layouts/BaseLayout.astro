@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Schema from '../components/Schema.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import Analytics from '../components/Analytics.astro';
+import { localBusiness, website, organization } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  schema?: object[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  preloadHero?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  noindex = false,
+  schema = [],
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const defaultSchemas = [website(), organization(), localBusiness()];
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      noindex={noindex}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
+    <Schema blocks={[...defaultSchemas, ...schema]} />
+    <link rel="preload" href="/fonts/poppins-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-display-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Pular para o conteúdo principal</a>
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+    <Analytics />
+
+    <script>
+      // Menu mobile acessível
+      const toggle = document.querySelector<HTMLElement>('[data-nav-toggle]');
+      const menu = document.querySelector<HTMLElement>('[data-nav-menu]');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const open = menu.getAttribute('data-open') === 'true';
+          menu.setAttribute('data-open', String(!open));
+          toggle.setAttribute('aria-expanded', String(!open));
+          toggle.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
+        });
+
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            menu.setAttribute('data-open', 'false');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Abrir menu');
+          });
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            menu.setAttribute('data-open', 'false');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.focus();
+          }
+        });
+      }
+
+      // Fecha o menu ao redimensionar para desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 968) {
+          menu?.setAttribute('data-open', 'false');
+          toggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import ResultsSection from '../components/ResultsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { services, getService } from '../data/services';
+import { testimonials, rating } from '../data/testimonials';
+import { faqs } from '../data/faqs';
+import { whatsappLink, BUSINESS } from '../data/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const servicesOnHome = services.slice(0, 3);
+const mainService = getService('protese-capilar-presidente-epitacio');
+
+const results = [
+  { image: '/images/resultado-protese-capilar-caso1.webp', alt: "Antes e depois de prótese capilar masculina da Figaro's Barbearia", label: 'Antes & Depois', title: 'Resultado caso 1' },
+  { image: '/images/resultado-protese-capilar-caso2.webp', alt: "Resultado de prótese capilar com fios naturais aplicado na Figaro's Barbearia", label: 'Antes & Depois', title: 'Resultado caso 2' },
+];
+---
+
+<BaseLayout
+  title="Figaro's Barbearia — Prótese Capilar em Presidente Epitácio"
+  description="Prótese capilar masculina com resultado natural em Presidente Epitácio (SP). Avaliação gratuita, resultado em uma única sessão e manutenção mensal. 4,8 estrelas no Google."
+  path="/"
+  ogImage="/images/og-image.webp"
+  ogType="website"
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Recupere sua <span style="color:var(--gold)">autoestima</span> com prótese capilar</h1>
+          <p>
+            Transformação completa em uma única sessão. Resultado natural, sem cirurgia e sem dor.
+            Especialistas em prótese capilar masculina em Presidente Epitácio.
+          </p>
+          <div class="hero-cta">
+            <a href={whatsappLink('avaliacao')} class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Agendar Avaliação
+            </a>
+            <a href="/protese-capilar-presidente-epitacio/" class="btn btn--outline">Ver serviços</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-number">{rating.value}</div>
+              <div class="stat-label">Estrelas no Google</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">+{rating.count}</div>
+              <div class="stat-label">Avaliações</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Sessão para transformar</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <picture>
+            <source srcset="/images/figaros-barbearia-presidente-epitacio.avif" type="image/avif" />
+            <source srcset="/images/figaros-barbearia-presidente-epitacio.webp" type="image/webp" />
+            <img
+              src="/images/figaros-barbearia-presidente-epitacio.webp"
+              alt="Prótese capilar masculina com resultado natural aplicado na Figaro's Barbearia, Presidente Epitácio"
+              width="1200"
+              height="1500"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+          <div class="rating-badge">
+            <div class="rating-stars">★★★★★</div>
+            <div class="rating-value">{rating.value}</div>
+            <div class="rating-count">+{rating.count} avaliações</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPOSTA DE VALOR -->
+  <section class="section section--black">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>Especialista em <span style="color:var(--gold)">prótese capilar masculina</span></h2>
+          <p style="margin-bottom:1rem;">
+            {mainService?.intro}
+          </p>
+          <ul class="features-list">
+            <li>Resultado natural e imperceptível</li>
+            <li>Sem cirurgia, sem dor e sem espera</li>
+            <li>{BUSINESS.hours[0].day}: {BUSINESS.hours[0].hours}</li>
+            <li>R. Maceió, 1274 — Centro, Presidente Epitácio-SP</li>
+          </ul>
+        </div>
+        <div class="hero-image">
+          <img
+            src="/images/especialista-wagner-pires.webp"
+            alt="Wagner Pires, barbeiro e especialista em prótese capilar da Figaro's Barbearia em Presidente Epitácio"
+            width="900"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section class="section section--charcoal" id="resultados">
+    <div class="container">
+      <div class="section-header">
+        <h2>Resultados <span style="color:var(--gold)">reais</span></h2>
+        <p>Transformações completas em uma única sessão</p>
+      </div>
+      <ResultsSection results={results} />
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/resultados/" class="btn btn--outline">Ver todos os resultados</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="section section--black" id="servicos">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nossos <span style="color:var(--gold)">serviços</span></h2>
+        <p>Tratamentos especializados para recuperar seu cabelo com naturalidade e segurança.</p>
+      </div>
+      <div class="grid-3">
+        {servicesOnHome.map((s) => <ServiceCard service={s} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section section--charcoal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Como <span style="color:var(--gold)">funciona</span></h2>
+      </div>
+      <div class="grid-3">
+        <div class="card"><span class="icon">1</span><h3>Avaliação</h3><p>Análise do seu caso, do couro cabeludo e das suas expectativas, sem compromisso.</p></div>
+        <div class="card"><span class="icon">2</span><h3>Aplicação</h3><p>Escolha do modelo ideal, preparação e colocação da prótese na mesma sessão.</p></div>
+        <div class="card"><span class="icon">3</span><h3>Manutenção</h3><p>Cuidados mensais que mantêm o resultado natural e a prótese durável.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section class="section section--black">
+    <div class="container">
+      <div class="section-header">
+        <h2>Para quem é <span style="color:var(--gold)">indicada</span></h2>
+      </div>
+      <ul class="features-list" style="max-width:820px;margin:0 auto;">
+        <li>Homens com entradas ou calvície avançada</li>
+        <li>Quem busca resultado imediato, sem cirurgia</li>
+        <li>Quem já testou tratamentos sem resultado</li>
+        <li>Quem quer autoestima e confiança de volta</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOBRE / AUTORIDADE -->
+  <section class="section section--charcoal" id="sobre">
+    <div class="container">
+      <div class="grid-2">
+        <div class="hero-image">
+          <img src="/images/especialista-wagner-pires.webp" alt="Wagner Pires barbeiro e especialista em prótese capilar" loading="lazy" decoding="async" width="900" height="900" />
+        </div>
+        <div>
+          <p class="specialty">Barbeiro e Especialista em Prótese Capilar</p>
+          <h2>Wagner Pires</h2>
+          <p style="margin-bottom:1rem;">
+            Especializado em prótese capilar masculina, oferece transformação completa em uma única sessão,
+            com resultados naturais que impressionam.
+          </p>
+          <p style="margin-bottom:1.5rem;">
+            Com +{rating.count} avaliações positivas no Google e nota {rating.value} estrelas,
+            é a escolha certa em Presidente Epitácio.
+          </p>
+          <a href="/sobre/" class="btn btn--outline">Conhecer nossa história</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section section--black" id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <h2>O que dizem <span style="color:var(--gold)">nossos clientes</span></h2>
+        <p>Avaliações reais do Google</p>
+      </div>
+      <div class="grid-3">
+        {testimonials.map((t) => <TestimonialCard testimonial={t} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--charcoal" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Perguntas <span style="color:var(--gold)">frequentes</span></h2>
+      </div>
+      <FaqSection items={faqs.slice(0, 6)} />
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/faq/" class="btn btn--outline">Ver todas as perguntas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="section section--black">
+    <div class="container">
+      <div class="section-header">
+        <h2>Conteúdos do <span style="color:var(--gold)">blog</span></h2>
+        <p>Dicas e respostas sobre prótese capilar e cuidados masculinos.</p>
+      </div>
+      <div class="grid-3">
+        {posts.map((p) => (
+          <ArticleCard
+            title={p.data.title}
+            slug={p.id}
+            category={p.data.category}
+            description={p.data.description}
+            pubDate={p.data.pubDate}
+            author={p.data.author}
+            image={p.data.image}
+          />
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/blog/" class="btn btn--outline">Ver todos os artigos</a>
+      </div>
+    </div>
+  </section>
+
+  <LocalBusinessSection />
+
+  <CTA title="Pronto para a transformação?" description="Agende sua avaliação gratuita e descubra como é simples recuperar sua autoestima." whatsappKey="avaliacao" />
+</BaseLayout>

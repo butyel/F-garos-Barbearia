@@ -1,0 +1,9 @@
+---
+interface Props {
+  blocks: object[];
+}
+
+const { blocks } = Astro.props;
+---
+
+{blocks.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}

@@ -1,0 +1,24 @@
+---
+interface Result {
+  image: string;
+  alt: string;
+  label: string;
+  title: string;
+}
+
+interface Props {
+  results: Result[];
+}
+
+const { results } = Astro.props;
+---
+
+<div class="ba-grid">
+  {results.map((r) => (
+    <figure class="ba-card">
+      <img src={r.image} alt={r.alt} loading="lazy" decoding="async" />
+      <div class="ba-label"><span>{r.label}</span></div>
+      <figcaption class="ba-title">{r.title}</figcaption>
+    </figure>
+  ))}
+</div>

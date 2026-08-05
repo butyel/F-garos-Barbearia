@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CTA from '../components/CTA.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  h1?: string;
+  lead?: string;
+  crumbs?: { name: string; path: string }[];
+  noindex?: boolean;
+  schema?: object[];
+}
+
+const {
+  title,
+  description,
+  path,
+  h1,
+  lead,
+  crumbs,
+  noindex = false,
+  schema = [],
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} path={path} noindex={noindex} schema={schema}>
+  <section class="page-hero">
+    <div class="container">
+      {crumbs && crumbs.length > 0 && <Breadcrumb items={crumbs} />}
+      {h1 && <h1 set:html={h1} />}
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+  </section>
+
+  <slot />
+
+  <CTA />
+</BaseLayout>

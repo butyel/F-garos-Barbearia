@@ -1,0 +1,27 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  whatsappKey?: string;
+}
+
+import { whatsappLink } from '../data/site';
+
+const {
+  title = 'Pronto para a transformação?',
+  description = 'Agende sua avaliação gratuita e descubra como é simples recuperar sua autoestima.',
+  buttonLabel = 'Falar no WhatsApp',
+  whatsappKey = 'avaliacao',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <a href={whatsappLink(whatsappKey)} class="btn btn--dark btn--lg" target="_blank" rel="noopener noreferrer">
+      {buttonLabel}
+    </a>
+  </div>
+</section>

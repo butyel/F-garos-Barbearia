@@ -1,0 +1,48 @@
+---
+// Analytics leve com GA4 opcional.
+// Para ativar, defina PUBLIC_GA4_ID no .env (ex.: G-XXXXXXXXXX).
+// Sem o id, nenhum script externo é carregado e nenhum evento é enviado.
+const ga4 = import.meta.env.PUBLIC_GA4_ID;
+---
+
+<script define:vars={{ ga4 }}>
+  window.dataLayer = window.dataLayer || [];
+
+  window.trackEvent = function (event, params = {}) {
+    window.dataLayer.push({ event, ...params });
+    if (window.gtag && typeof window.gtag === 'function') {
+      window.gtag('event', event, params);
+    }
+  };
+
+  const addDataClick = (selector, eventName) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.addEventListener('click', () => window.trackEvent(eventName));
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Eventos de conversão
+    addDataClick('.whatsapp-float, a[href*="wa.me"]', 'whatsapp_click');
+    addDataClick('a[href^="tel:"]', 'phone_click');
+    addDataClick('a[href*="google.com/maps"]', 'map_click');
+    addDataClick('a[href*="instagram.com"]', 'instagram_click');
+    addDataClick('.btn--primary', 'cta_agendamento');
+  });
+
+  // Carregar GA4 somente se houver id configurado
+  if (ga4) {
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      (i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }), (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })('window', document, 'script', 'https://www.googletagmanager.com/gtag/js?id=' + ga4, 'gtag');
+    window.gtag('js', new Date());
+    window.gtag('config', ga4);
+  }
+</script>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Blog — Prótese Capilar e Cuidados Masculinos"
+  description="Blog da Figaro's Barbearia: dúvidas sobre prótese capilar, preços, duração, manutenção e cuidados do cabelo masculino em Presidente Epitácio (SP)."
+  path="/blog/"
+>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Blog <span style="color:var(--gold)">Figaro's</span></h1>
+      <p class="lead">Respostas diretas e conteúdo confiável sobre prótese capilar, calvície e cuidados masculinos.</p>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p style="text-align:center;color:var(--gray);">Em breve novos artigos serão publicados.</p>
+      ) : (
+        <div class="grid-3">
+          {posts.map((p) => (
+            <ArticleCard
+              title={p.data.title}
+              slug={p.id}
+              category={p.data.category}
+              description={p.data.description}
+              pubDate={p.data.pubDate}
+              author={p.data.author}
+              image={p.data.image}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CTA
+    title="Quer saber mais na prática?"
+    description="Agende uma avaliação gratuita e tire suas dúvidas com o especialista."
+    whatsappKey="avaliacao"
+  />
+</BaseLayout>

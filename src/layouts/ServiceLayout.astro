@@ -1,0 +1,116 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CTA from '../components/CTA.astro';
+import LocalBusinessSection from '../components/LocalBusinessSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { getService, type ServiceDetail } from '../data/services';
+import { serviceSchema } from '../lib/schema';
+import { whatsappLink } from '../data/site';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const service = getService(slug);
+
+if (!service) {
+  return;
+}
+
+const related = service.related.map((s) => getService(s)).filter((s): s is ServiceDetail => Boolean(s));
+const scheme = [
+  serviceSchema(service.slug, service.title, service.description),
+];
+---
+
+<BaseLayout
+  title={service.title}
+  description={service.description}
+  path={`/${service.slug}/`}
+  schema={scheme}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumb items={[{ name: 'Serviços', path: '/' }]} />
+      <h1>{service.h1}</h1>
+      <p class="lead">{service.intro}</p>
+      <div class="hero-cta" style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href={whatsappLink(service.whatsappKey)} class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          {service.offer}
+        </a>
+        <a href="#como-funciona" class="btn btn--outline">Como funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--charcoal" id="como-funciona">
+    <div class="container">
+      <div class="grid-2" style="align-items:start;">
+        <div>
+          <h2>Como funciona <span style="color:var(--gold);">esse serviço</span></h2>
+          {service.sections.map((s) => (
+            <div style="margin-bottom:1.5rem;">
+              <h3>{s.h2}</h3>
+              {s.paragraphs.map((p) => <p style="margin-bottom:0.75rem;">{p}</p>)}
+            </div>
+          ))}
+        </div>
+        <aside>
+          <div class="card">
+            <span class="icon" aria-hidden="true">{service.icon}</span>
+            <h3>Benefícios</h3>
+            <ul class="features-list">
+              {service.benefits.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--black">
+    <div class="container">
+      <div class="section-header">
+        <h2>Para quem é <span>indicado</span></h2>
+      </div>
+      <ul class="features-list" style="max-width:820px;margin:0 auto;">
+        {service.idealFor.map((i) => <li>{i}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  {service.faq.length > 0 && (
+    <section class="section section--charcoal">
+      <div class="container">
+        <div class="section-header">
+          <h2>Perguntas sobre <span>este serviço</span></h2>
+        </div>
+        <FaqSection items={service.faq} />
+      </div>
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="section section--black">
+      <div class="container">
+        <div class="section-header">
+          <h2>Conheça também</h2>
+        </div>
+        <div class="grid-3">
+          {related.map((rel) => <ServiceCard service={rel} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <LocalBusinessSection />
+
+  <CTA
+    title="Quer saber mais sobre este serviço?"
+    description="Fale com o especialista e receba sua avaliação gratuita em Presidente Epitácio."
+    whatsappKey={service.whatsappKey}
+  />
+</BaseLayout>

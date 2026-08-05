@@ -1,0 +1,22 @@
+{
+  "name": "figaros-barbearia",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Figaro's Barbearia — Prótese Capilar Masculina em Presidente Epitácio/SP. Site estático gerado com Astro.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "sync": "astro sync"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.6",
+    "sharp": "^0.35.3",
+    "typescript": "^6.0.3"
+  }
+}
